@@ -1,8 +1,8 @@
 from uuid import uuid4
 from typing import Union
 
-from src.permit import Permit
-from src.vehicle_type import VehicleType
+from garage.permit import Permit
+from garage.vehicle_type import VehicleType
 
 
 class Vehicle:

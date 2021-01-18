@@ -1,8 +1,8 @@
 from typing import List
 
-from src.garage import Garage
-from src.parking_level import ParkingLevel
-from src.vehicle import Vehicle
+from garage.garage import Garage
+from garage.parking_level import ParkingLevel
+from garage.vehicle import Vehicle
 
 
 class TestHelpers:

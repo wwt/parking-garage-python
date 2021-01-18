@@ -5,39 +5,45 @@ This project has been started, but the requirements defined in the unit tests ha
 
 ## Setup
 
-- Use [Visual Studio Code](https://code.visualstudio.com/) or the IDE of your choice.
-- Use [Pipenv](https://pipenv.pypa.io/en/latest/) to manage dependencies and the virtual environment.
+1. Use [Visual Studio Code](https://code.visualstudio.com/) or the IDE of your choice.
+1. Install [Pipenv](https://pipenv.pypa.io/en/latest/) in order to manage dependencies and virtual environment.
 
-  Install Pipenv with pip:
+    Install Pipenv with pip:
 
-  ```bash
-  pip install --user pipenv
-  ```
+    ```bash
+    pip install --user pipenv
+    ```
 
-  or with Homebrew:
+    or with Homebrew:
 
-  ```bash
-  brew install pipenv
-  ```
+    ```bash
+    brew install pipenv
+    ```
 
-  Once Pipenv is installed, install dependencies from Pipfile:
+1. Create a virtual environment for the project.
 
-  ```bash
-  pipenv install
-  ```
+    ```bash
+    pipenv install
+    ```
   
-  Add any new packages to the project as follows:
+1. Activate the project virtual environment.
 
-  ```bash
-  pipenv install <package>
-  ```
+    ```bash
+    pipenv shell
+    ```
+
+1. As needed, install dependencies.
+
+    ```bash
+    pipenv install <package>
+    ```
 
 ## Run Tests
 
-This project uses the pytest framework. Tests can be executed by running the pytest module.
+This project uses the [pytest](https://docs.pytest.org/en/stable/usage.html) framework for unit testing. Tests can be executed by running the pytest module.
 
 ```bash
-python -m pytest
+pytest
 ```
 
 ## The Problem

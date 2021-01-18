@@ -1,7 +1,7 @@
 from typing import Union
 
-from src.permit import Permit
-from src.vehicle import Vehicle
+from garage.permit import Permit
+from garage.vehicle import Vehicle
 
 
 class ParkingSpace:

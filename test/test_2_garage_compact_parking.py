@@ -1,11 +1,11 @@
 from typing import List
 
-from src.garage import Garage
-from src.parking_level import ParkingLevel
-from src.parking_space import ParkingSpace
-from src.vehicle import Vehicle
-from src.vehicle_type import VehicleType
-from test_helpers.helpers import TestHelpers
+from garage.garage import Garage
+from garage.parking_level import ParkingLevel
+from garage.parking_space import ParkingSpace
+from garage.vehicle import Vehicle
+from garage.vehicle_type import VehicleType
+from test.utils import TestHelpers
 
 
 def test_standard_cars_are_rejected_from_compact_parking_space():

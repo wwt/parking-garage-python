@@ -1,6 +1,6 @@
 from typing import List
 
-from src.parking_space import ParkingSpace
+from garage.parking_space import ParkingSpace
 
 
 class ParkingLevel:

@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "a1fa58f3cbe12ab924400d44fdeed4943bd0f55af6331fde2c1d7aa6eb60d0ce"
+            "sha256": "5ebfc78927de81742fd163f2f45ff539e0d9e76b2bf546e38ac0f79ae33bd74d"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -23,6 +23,10 @@
             ],
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==20.3.0"
+        },
+        "garage": {
+            "editable": true,
+            "path": "."
         },
         "iniconfig": {
             "hashes": [
