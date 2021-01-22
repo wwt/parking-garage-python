@@ -46,6 +46,12 @@ This project uses the [pytest](https://docs.pytest.org/en/stable/usage.html) fra
 pytest
 ```
 
+The package [pytest-watch](https://github.com/joeyespo/pytest-watch) has been included as an optional convenience. Use the following command to run all tests and have them automatically run again each time you make a change to the app code.
+
+```bash
+ptw
+```
+
 ## The Problem
 
 You will take in a batch of vehicles. Your task is to process these vehicles, according to the constraints below, and either park or reject individual vehicles from the garage. Do this by working through the tests in the ***test*** directory and implement code in the ***src*** directory to make these tests pass.
