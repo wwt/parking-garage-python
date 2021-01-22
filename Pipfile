@@ -8,6 +8,7 @@ black = "==20.8b1"
 
 [packages]
 pytest = "~=6.2"
+pytest-watch = "~=4.2.0"
 garage = {editable = true, path = "."}
 
 [requires]
