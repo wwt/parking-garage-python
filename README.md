@@ -6,6 +6,7 @@ This project has been started, but the requirements defined in the unit tests ha
 ## Setup
 
 1. Use [Visual Studio Code](https://code.visualstudio.com/) or the IDE of your choice.
+1. Install [Python 3.9](https://www.python.org/downloads/release/python-390/). Version 3.9 is required for the project.
 1. Install [Pipenv](https://pipenv.pypa.io/en/latest/) in order to manage dependencies and virtual environment.
 
     Install Pipenv with pip:
@@ -78,10 +79,9 @@ In addition, the parking garage imposes the following prioritization on parking:
 
 1. Vehicles with disability permits must be parked in available disability parking spaces before they may be placed in non-disability parking spaces.
 1. Vehicles with premium permits must be parked in available premium parking spaces before they may be placed in non-permitted parking spaces.
-1. Vehicles with dual disability and premium permits are prioritized into disability parking spaces before premium parking spaces.
+1. Vehicles with both disability AND premium permits are parked into disability parking spaces. Once disability parking spaces have been filled, these dual-permit vehicles are parked in available premium parking spaces.
 1. Vehicles with premium permits are prioritized for non-permitted parking spaces.
-1. Vehicles with dual disability and premium permits are prioritized for premium parking spaces.
-1. Compact vehicles must first be parked in available compact parking spaces with respect to the vehicle permits.
+1. Compact vehicles are parked in available compact parking spaces after permitted spaces, for which they qualify, have been filled.
 
 ## Submitting Results
 
