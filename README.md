@@ -78,9 +78,9 @@ In addition, the parking garage imposes the following prioritization on parking:
 
 1. Vehicles with disability permits must be parked in available disability parking spaces before they may be placed in non-disability parking spaces.
 1. Vehicles with premium permits must be parked in available premium parking spaces before they may be placed in non-permitted parking spaces.
-1. Vehicles with dual disability and premium permits are prioritized into disability parking spaces before premium parking spaces.
+1. Vehicles with both disability AND premium permits are prioritized into disability parking spaces before premium parking spaces.
 1. Vehicles with premium permits are prioritized for non-permitted parking spaces.
-1. Vehicles with dual disability and premium permits are prioritized for premium parking spaces.
+1. Vehicles with both disability AND premium permits are prioritized for premium parking spaces once disability parking spaces have been filled.
 1. Compact vehicles must first be parked in available compact parking spaces with respect to the vehicle permits.
 
 ## Submitting Results
