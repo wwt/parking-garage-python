@@ -46,6 +46,12 @@ This project uses the [pytest](https://docs.pytest.org/en/stable/usage.html) fra
 pytest
 ```
 
+If you want to run only a specific test or tests, use the `-k` switch. For example, to run only tests starting with "test_foo", use the following command:
+
+```bash
+pytest -k test_foo
+```
+
 The package [pytest-watch](https://github.com/joeyespo/pytest-watch) has been included as an optional convenience. Use the following command to run all tests and have them automatically run again each time you make a change to the app code.
 
 ```bash
