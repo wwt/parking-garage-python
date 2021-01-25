@@ -72,12 +72,16 @@ class TestHelpers:
                         expected_vehicles[index],
                     )
                 ]
-            )
+            ), "Vehicles not found on the expected garage levels."
 
     @staticmethod
     def assert_expected_vehicles_are_rejected(
         actual: List[Vehicle],
         expected: List[Vehicle],
     ):
-        assert len(actual) == len(expected)
-        assert all([actual is expected for actual, expected in zip(actual, expected)])
+        assert len(actual) == len(
+            expected
+        ), "Incorrect number of vehicles were rejected."
+        assert all(
+            [actual is expected for actual, expected in zip(actual, expected)]
+        ), "Wrong vehicles were rejected from the garage."

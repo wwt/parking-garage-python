@@ -12,44 +12,46 @@ from test.utils import TestHelpers
 def test_new_vehicles_have_an_id():
     vehicle = Vehicle()
 
-    assert isinstance(vehicle.vehicle_id, str)
-    assert not vehicle.vehicle_id.isspace()
+    assert isinstance(vehicle.vehicle_id, str), "Vehicle ID is not a string instance"
+    assert not vehicle.vehicle_id.isspace(), "Vehicle ID was not assigned."
 
 
 def test_new_vehicles_are_cars():
     vehicle = Vehicle()
 
-    assert vehicle.vehicle_type is VehicleType.Car
+    assert vehicle.vehicle_type is VehicleType.Car, "Default vehicle type is not Car."
 
 
 def test_new_vehicles_do_not_have_permits():
     vehicle = Vehicle()
 
-    assert vehicle.permit is Permit.NONE
+    assert vehicle.permit is Permit.NONE, "Default vehicle holds a permit."
 
 
 def test_new_parking_spaces_are_not_compact():
     parking_space = ParkingSpace()
 
-    assert not parking_space.compact
+    assert not parking_space.compact, "Default parking space is compact."
 
 
 def test_new_parking_spaces_do_not_require_permits():
     parking_space = ParkingSpace()
 
-    assert parking_space.required_permit is Permit.NONE
+    assert (
+        parking_space.required_permit is Permit.NONE
+    ), "Default parking space requires a permit."
 
 
 def test_new_parking_spaces_are_empty():
     parking_space = ParkingSpace()
 
-    assert parking_space.vehicle is None
+    assert parking_space.vehicle is None, "Default parking space is not empty."
 
 
 def test_new_garages_have_zero_levels():
     garage = Garage()
 
-    assert len(garage.levels) == 0
+    assert len(garage.levels) == 0, "Default garage contains levels."
 
 
 def test_vehicle_is_added_to_parking_space():
@@ -60,7 +62,9 @@ def test_vehicle_is_added_to_parking_space():
     garage = Garage(levels=[parking_level])
     garage.add_vehicles(vehicles=[vehicle])
 
-    assert parking_space.vehicle is vehicle
+    assert (
+        parking_space.vehicle is vehicle
+    ), "Parking space does not contain the expected vehicle."
 
 
 def test_vehicles_are_added_to_single_level_garage_until_capacity_is_reached():
