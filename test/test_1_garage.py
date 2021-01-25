@@ -60,7 +60,7 @@ def test_vehicle_is_added_to_parking_space():
     garage = Garage(levels=[parking_level])
     garage.add_vehicles(vehicles=[vehicle])
 
-    assert parking_space.vehicle is vehicle
+    assert parking_space.vehicle is vehicle, 'Parking space does not contain the right vehicle.'
 
 
 def test_vehicles_are_added_to_single_level_garage_until_capacity_is_reached():
