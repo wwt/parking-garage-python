@@ -58,10 +58,10 @@ class TestHelpers:
         )
 
     @staticmethod
-    def assert_expected_vehicles_on_levels(
-        levels: List[ParkingLevel], expected_vehicles: List[List[Vehicle]]
+    def assert_expected_parking_placement(
+        levels: List[ParkingLevel], expected_levels: List[List[Vehicle]]
     ):
-        assert len(levels) == len(expected_vehicles)
+        assert len(levels) == len(expected_levels)
 
         for index, parking_level in enumerate(levels):
             assert all(
@@ -69,10 +69,10 @@ class TestHelpers:
                     actual is expected
                     for actual, expected in zip(
                         TestHelpers.vehicles_on_level(level=parking_level),
-                        expected_vehicles[index],
+                        expected_levels[index],
                     )
                 ]
-            ), "Vehicles not found on the expected garage levels."
+            ), "Vehicle was not found in the expected parking space."
 
     @staticmethod
     def assert_expected_vehicles_are_rejected(
@@ -81,7 +81,7 @@ class TestHelpers:
     ):
         assert len(actual) == len(
             expected
-        ), "Incorrect number of vehicles were rejected."
+        ), "Unexpected number of vehicles were rejected."
         assert all(
             [actual is expected for actual, expected in zip(actual, expected)]
-        ), "Wrong vehicles were rejected from the garage."
+        ), "Unexpected vehicle was rejected from the garage. Or an unexpected rejection order."

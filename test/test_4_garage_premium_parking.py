@@ -30,19 +30,19 @@ def test_vehicles_without_premium_permits_are_rejected_from_premium_parking_spac
     vehicle_5 = Vehicle(permit=Permit.DISABILITY)
     vehicle_6 = Vehicle(permit=Permit.NONE)
 
-    expected_vehicles_rejected: List[Vehicle] = [
+    expected_rejected_vehicles: List[Vehicle] = [
         vehicle_2,
         vehicle_3,
         vehicle_5,
         vehicle_6,
     ]
 
-    actual_vehicles_rejected = garage.add_vehicles(
+    actual_rejected_vehicles = garage.add_vehicles(
         [vehicle_1, vehicle_2, vehicle_3, vehicle_4, vehicle_5, vehicle_6]
     )
 
     TestHelpers.assert_expected_vehicles_are_rejected(
-        actual=actual_vehicles_rejected, expected=expected_vehicles_rejected
+        actual=actual_rejected_vehicles, expected=expected_rejected_vehicles
     )
 
 
@@ -75,9 +75,9 @@ def test_vehicles_with_premium_permits_are_added_to_premium_parking_spaces():
         [vehicle_1, vehicle_2, vehicle_3, vehicle_4, vehicle_5, vehicle_6]
     )
 
-    TestHelpers.assert_expected_vehicles_on_levels(
+    TestHelpers.assert_expected_parking_placement(
         levels=garage.levels,
-        expected_vehicles=[
+        expected_levels=[
             expected_vehicles_on_level_1,
             expected_vehicles_on_level_2,
             expected_vehicles_on_level_3,
@@ -115,9 +115,9 @@ def test_vehicles_with_premium_permits_take_priority_over_non_permitted_spaces()
         [vehicle_1, vehicle_2, vehicle_3, vehicle_4, vehicle_5, vehicle_6, vehicle_7]
     )
 
-    TestHelpers.assert_expected_vehicles_on_levels(
+    TestHelpers.assert_expected_parking_placement(
         levels=garage.levels,
-        expected_vehicles=[
+        expected_levels=[
             expected_vehicles_on_level_1,
             expected_vehicles_on_level_2,
             expected_vehicles_on_level_3,
@@ -154,9 +154,9 @@ def test_vehicles_with_dual_premium_disability_permits_take_priority_over_premiu
         [vehicle_1, vehicle_2, vehicle_3, vehicle_4, vehicle_5, vehicle_6]
     )
 
-    TestHelpers.assert_expected_vehicles_on_levels(
+    TestHelpers.assert_expected_parking_placement(
         levels=garage.levels,
-        expected_vehicles=[
+        expected_levels=[
             expected_vehicles_on_level_1,
             expected_vehicles_on_level_2,
             expected_vehicles_on_level_3,
@@ -164,7 +164,7 @@ def test_vehicles_with_dual_premium_disability_permits_take_priority_over_premiu
     )
 
 
-def test_compact_vehicles_with_premium_permits_are_prioritized_into_premium_parking_spaces():
+def test_compact_vehicles_with_premium_permits_are_first_prioritized_into_premium_parking_spaces():
     parking_space_a = ParkingSpace(required_permit=Permit.PREMIUM)
     parking_space_b = ParkingSpace(compact=True)
     parking_space_c = ParkingSpace(compact=True)
@@ -194,9 +194,9 @@ def test_compact_vehicles_with_premium_permits_are_prioritized_into_premium_park
         [vehicle_1, vehicle_2, vehicle_3, vehicle_4, vehicle_5, vehicle_6, vehicle_7]
     )
 
-    TestHelpers.assert_expected_vehicles_on_levels(
+    TestHelpers.assert_expected_parking_placement(
         levels=garage.levels,
-        expected_vehicles=[
+        expected_levels=[
             expected_vehicles_on_level_1,
             expected_vehicles_on_level_2,
             expected_vehicles_on_level_3,
@@ -204,7 +204,7 @@ def test_compact_vehicles_with_premium_permits_are_prioritized_into_premium_park
     )
 
 
-def test_compact_vehicles_with_dual_premium_disability_permits_take_the_same_priority_as_non_compact_vehicles():
+def test_compact_vehicles_with_dual_premium_disability_permits_are_first_prioritized_into_disability_spaces_then_premium_spaces():
     parking_space_a = ParkingSpace(required_permit=Permit.DISABILITY)
     parking_space_b = ParkingSpace(required_permit=Permit.PREMIUM)
     parking_space_c = ParkingSpace(required_permit=Permit.PREMIUM)
@@ -241,9 +241,9 @@ def test_compact_vehicles_with_dual_premium_disability_permits_take_the_same_pri
         [vehicle_1, vehicle_2, vehicle_3, vehicle_4, vehicle_5, vehicle_6]
     )
 
-    TestHelpers.assert_expected_vehicles_on_levels(
+    TestHelpers.assert_expected_parking_placement(
         levels=garage.levels,
-        expected_vehicles=[
+        expected_levels=[
             expected_vehicles_on_level_1,
             expected_vehicles_on_level_2,
             expected_vehicles_on_level_3,

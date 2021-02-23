@@ -68,21 +68,14 @@ def test_vehicle_is_added_to_parking_space():
 
 
 def test_vehicles_are_added_to_single_level_garage_until_capacity_is_reached():
-    parking_space_a = ParkingSpace()
-    parking_space_b = ParkingSpace()
-    parking_space_c = ParkingSpace()
-    parking_space_d = ParkingSpace()
-    parking_space_e = ParkingSpace()
-    parking_space_f = ParkingSpace()
-
     parking_level_1 = ParkingLevel(
         spaces=[
-            parking_space_a,
-            parking_space_b,
-            parking_space_c,
-            parking_space_d,
-            parking_space_e,
-            parking_space_f,
+            ParkingSpace(),
+            ParkingSpace(),
+            ParkingSpace(),
+            ParkingSpace(),
+            ParkingSpace(),
+            ParkingSpace(),
         ]
     )
 
@@ -109,27 +102,20 @@ def test_vehicles_are_added_to_single_level_garage_until_capacity_is_reached():
         [vehicle_1, vehicle_2, vehicle_3, vehicle_4, vehicle_5, vehicle_6, vehicle_7]
     )
 
-    TestHelpers.assert_expected_vehicles_on_levels(
+    TestHelpers.assert_expected_parking_placement(
         levels=garage.levels,
-        expected_vehicles=[
+        expected_levels=[
             expected_vehicles_on_level_1,
         ],
     )
 
 
 def test_vehicles_are_added_to_multi_level_garage_until_capacity_is_reached():
-    parking_space_a = ParkingSpace()
-    parking_space_b = ParkingSpace()
-    parking_space_c = ParkingSpace()
-    parking_space_d = ParkingSpace()
-    parking_space_e = ParkingSpace()
-    parking_space_f = ParkingSpace()
-
     parking_level_1 = ParkingLevel(
-        spaces=[parking_space_a, parking_space_b, parking_space_c]
+        spaces=[ParkingSpace(), ParkingSpace(), ParkingSpace()]
     )
-    parking_level_2 = ParkingLevel(spaces=[parking_space_d, parking_space_e])
-    parking_level_3 = ParkingLevel(spaces=[parking_space_f])
+    parking_level_2 = ParkingLevel(spaces=[ParkingSpace(), ParkingSpace()])
+    parking_level_3 = ParkingLevel(spaces=[ParkingSpace()])
 
     garage = Garage(levels=[parking_level_1, parking_level_2, parking_level_3])
 
@@ -149,9 +135,9 @@ def test_vehicles_are_added_to_multi_level_garage_until_capacity_is_reached():
         [vehicle_1, vehicle_2, vehicle_3, vehicle_4, vehicle_5, vehicle_6, vehicle_7]
     )
 
-    TestHelpers.assert_expected_vehicles_on_levels(
+    TestHelpers.assert_expected_parking_placement(
         levels=garage.levels,
-        expected_vehicles=[
+        expected_levels=[
             expected_vehicles_on_level_1,
             expected_vehicles_on_level_2,
             expected_vehicles_on_level_3,
@@ -160,12 +146,8 @@ def test_vehicles_are_added_to_multi_level_garage_until_capacity_is_reached():
 
 
 def test_vehicles_are_rejected_when_capacity_is_exceeded():
-    parking_space_a = ParkingSpace()
-    parking_space_b = ParkingSpace()
-    parking_space_c = ParkingSpace()
-
-    parking_level_1 = ParkingLevel(spaces=[parking_space_a, parking_space_b])
-    parking_level_2 = ParkingLevel(spaces=[parking_space_c])
+    parking_level_1 = ParkingLevel(spaces=[ParkingSpace(), ParkingSpace()])
+    parking_level_2 = ParkingLevel(spaces=[ParkingSpace()])
 
     garage = Garage(levels=[parking_level_1, parking_level_2])
 
@@ -177,17 +159,17 @@ def test_vehicles_are_rejected_when_capacity_is_exceeded():
     vehicle_6 = Vehicle()
     vehicle_7 = Vehicle()
 
-    expected_vehicles_rejected: List[Vehicle] = [
+    expected_rejected_vehicles: List[Vehicle] = [
         vehicle_4,
         vehicle_5,
         vehicle_6,
         vehicle_7,
     ]
 
-    actual_vehicles_rejected = garage.add_vehicles(
+    actual_rejected_vehicles = garage.add_vehicles(
         [vehicle_1, vehicle_2, vehicle_3, vehicle_4, vehicle_5, vehicle_6, vehicle_7]
     )
 
     TestHelpers.assert_expected_vehicles_are_rejected(
-        actual=actual_vehicles_rejected, expected=expected_vehicles_rejected
+        actual=actual_rejected_vehicles, expected=expected_rejected_vehicles
     )
