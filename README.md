@@ -33,7 +33,7 @@ This project has been started, but the requirements defined in the unit tests ha
     pipenv shell
     ```
 
-1. As needed, install dependencies.
+1. As needed, install dependencies you wish to add.
 
     ```bash
     pipenv install <package>
@@ -61,7 +61,9 @@ ptw
 
 ## The Problem
 
-You will take in a batch of vehicles. Your task is to process these vehicles, according to the constraints below, and either park or reject individual vehicles from the garage. Do this by working through the tests in the ***test*** directory and implement code in the ***src*** directory to make these tests pass.
+>***Note:*** The description below summarizes the constraints imposed by the project's unit tests. Unit tests are the primary specifications.
+
+You will take in a batch of vehicles. Your task is to process these vehicles, according to the constraints defined in the unit tests, and either park or reject individual vehicles from the garage. Do this by working through the tests in the ***test*** directory and implement code in the ***src*** directory to make these tests pass.
 
 ### Constraints
 
@@ -69,19 +71,16 @@ A parking garage is made up of parking levels. These levels can contain any numb
 
 Parking spaces have the below restrictions on vehicle:
 
-1. Compact parking spaces.
-   - Only compact vehicles may park in compact parking spaces.
 1. Permit requirements.
     - Parking spaces may have disability, premium, or no permit requirements.
     - Vehicles must possess all permits required by a parking space in order to access the space.
-
-In addition, the parking garage imposes the following prioritization on parking:
-
-1. Vehicles with disability permits must be parked in available disability parking spaces before they may be placed in non-disability parking spaces.
-1. Vehicles with premium permits must be parked in available premium parking spaces before they may be placed in non-permitted parking spaces.
-1. Vehicles with both disability AND premium permits are parked into disability parking spaces. Once disability parking spaces have been filled, these dual-permit vehicles are parked in available premium parking spaces.
-1. Vehicles with premium permits are prioritized for non-permitted parking spaces.
-1. Compact vehicles are parked in available compact parking spaces after permitted spaces, for which they qualify, have been filled.
+    - Vehicles holding disability permits must be parked in available disability parking spaces before they may be parked in any other parking category.
+    - Vehicles holding premium permits must be parked in available premium parking spaces before they may be parked in non-permit parking spaces.
+    - Vehicles holding premium permits have priority over non-permit parking spaces.
+1. Compact parking requirements.
+   - Only compact vehicles may park in compact parking spaces.
+   - Compact vehicles are prioritized into compact parking spaces before non-permit parking spaces.
+   - Compact vehicles that hold permits are prioritized into permit parking spaces before compact spaces.
 
 ## Submitting Results
 
